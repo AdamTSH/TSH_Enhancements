@@ -34,21 +34,21 @@
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>HipHop<\/a>/g, '><img src="http://www.dustball.com/icons/icons/user_comment.png" alt="Hip-Hop"/>Hip-Hop</a>')
         // 3: END
         
-		// 4: Make NUKKED torrents red
+        // 4: Make NUKKED torrents red
         var nukeArray = spanArray[s].getElementsByClassName('browsenuke');
         
         for(var n = 0; n < nukeArray.length; n++)
         {
-			// As the word "UnNuked" contains the word "Nuked" we have to check which one it is.
-			if(nukeArray[n].innerHTML.indexOf("UnNuked") == -1)
-			{
-				var element = nukeArray[n].parentNode.parentNode;
-				
-				element.style["background-color"] = "#FF3333";
-				element.style["color"] = "#FFFFFF";
-			}
+            // As the word "UnNuked" contains the word "Nuked" we have to check which one it is.
+            if(nukeArray[n].innerHTML.indexOf("UnNuked") == -1)
+            {
+                var element = nukeArray[n].parentNode.parentNode;
+                
+                element.style["background-color"] = "#FF3333";
+                element.style["color"] = "#FFFFFF";
+            }
         }
-	    // 4: END
+        // 4: END
     }
     // 2: END
 })();
