@@ -18,7 +18,7 @@
     // Grab all tags
     var spanArray = container.getElementsByClassName('tags');
     
-    for(var s=0; s<spanArray.length; s++)
+    for(var s = 0; s < spanArray.length; s++)
     {
         // 3: Add icons for Music Genres
         // http://www.dustball.com/icons/ is a CDN I found that hosts the Silk icon set from FamFamFam
@@ -31,12 +31,13 @@
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Dance<\/a>/g, '><img src="http://www.dustball.com/icons/icons/group.png" alt="Dance"/>Dance</a>');
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Top40<\/a>/g, '><img src="http://www.dustball.com/icons/icons/award_star_gold_3.png" alt="Top40"/>Top40</a>');
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Hardcore<\/a>/g, '><img src="http://www.dustball.com/icons/icons/lightning.png" alt="Hardcore"/>Hardcore</a>');
+        spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>HipHop<\/a>/g, '><img src="http://www.dustball.com/icons/icons/user_comment.png" alt="Hip-Hop"/>Hip-Hop</a>')
         // 3: END
         
 		// 4: Make NUKKED torrents red
         var nukeArray = spanArray[s].getElementsByClassName('browsenuke');
         
-        for(var n=0; n<nukeArray.length; n++)
+        for(var n = 0; n < nukeArray.length; n++)
         {
 			// As the word "UnNuked" contains the word "Nuked" we have to check which one it is.
 			if(nukeArray[n].innerHTML.indexOf("UnNuked") == -1)
@@ -47,7 +48,7 @@
 				element.style["color"] = "#FFFFFF";
 			}
         }
-		// 4: END
+	    // 4: END
     }
     // 2: END
 })();
