@@ -9,7 +9,7 @@
 (function() 
 {
     // 1: Add text of why a torrent was NUKED in the page.
-    document.body.innerHTML = document.body.innerHTML.replace(/title="(.*)">Nuked<\/span>/g, "><b>Nuked</b> <- $1</span>");
+    document.body.innerHTML = document.body.innerHTML.replace(/title="(.*)">(.*)Nuked<\/span>/g, "><b>$2Nuked</b> <- $1</span>");
     // 1: END
     
     // 2: Get the table element of all torrent.
@@ -20,7 +20,7 @@
     
     for(var s=0; s<spanArray.length; s++)
     {
-        // - Add icons for Music Genres
+        // 3: Add icons for Music Genres
         // http://www.dustball.com/icons/ is a CDN I found that hosts the Silk icon set from FamFamFam
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>House<\/a>/g, '><img src="http://www.dustball.com/icons/icons/house.png" alt="House"/>House</a>');
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Electronic<\/a>/g, '><img src="http://www.dustball.com/icons/icons/computer.png" alt="Electronic"/>Electronic</a>');
@@ -31,17 +31,23 @@
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Dance<\/a>/g, '><img src="http://www.dustball.com/icons/icons/group.png" alt="Dance"/>Dance</a>');
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Top40<\/a>/g, '><img src="http://www.dustball.com/icons/icons/award_star_gold_3.png" alt="Top40"/>Top40</a>');
         spanArray[s].innerHTML = spanArray[s].innerHTML.replace(/>Hardcore<\/a>/g, '><img src="http://www.dustball.com/icons/icons/lightning.png" alt="Hardcore"/>Hardcore</a>');
-        // - End Icons
+        // 3: END
         
+		// 4: Make NUKKED torrents red
         var nukeArray = spanArray[s].getElementsByClassName('browsenuke');
         
         for(var n=0; n<nukeArray.length; n++)
         {
-            var element = nukeArray[n].parentNode.parentNode;
-            
-            element.style["background-color"] = "#FF3333";
-            element.style["color"] = "#FFFFFF";
+			// As the word "UnNuked" contains the word "Nuked" we have to check which one it is.
+			if(nukeArray[n].innerHTML.indexOf("UnNuked") == -1)
+			{
+				var element = nukeArray[n].parentNode.parentNode;
+				
+				element.style["background-color"] = "#FF3333";
+				element.style["color"] = "#FFFFFF";
+			}
         }
+		// 4: END
     }
     // 2: END
 })();
