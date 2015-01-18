@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         TSH Enhancements
-// @version      0.1.5
+// @version      0.1.6
 // @description  Enhancements to TSH
 // @match        https://torrentshack.eu/torrents.php*
 // @grant        none
@@ -100,6 +100,19 @@
 
                 torrentName.innerHTML = "" + detailName + " - " + detailDateYear + "-" + detailDateMonth + "-" +  detailDateDay + "</span> (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
+
+            // SHOW.NAME.VIDEO_QUALITY.VIDEO_SOURCE.AUDIO_CODEC.VIDEO_CODEC-GROUP
+            var match = torrentName.innerHTML.match(/(.*)\.(720p|1080i|1080p)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV|BluRay).*(H.264|x264|X264|h264|H264)-(.*)/);
+            if (match !== null) 
+            {
+                var detailName = match[1].replace(/\./g, " ");
+                var detailQuality = match[2];
+                var detailSource = match[3];
+                var detailCodec = match[4];
+                var detailGroup = match[5];
+
+                torrentName.innerHTML = "" + detailName + " - " + "</span> (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
+            }
         }
 
         // Check if torrent is TV/SD
@@ -134,6 +147,19 @@
                 var detailGroup = match[7];
 
                 torrentName.innerHTML = "" + detailName + " - " + detailDateYear + "-" + detailDateMonth + "-" +  detailDateDay + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
+            }
+
+            // SHOW.NAME.VIDEO_SOURCE.AUDIO_CODEC.VIDEO_CODEC-GROUP
+            var match = torrentName.innerHTML.match(/(.*)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV|BluRay).*(H.264|x264|X264|h264|H264)-(.*)/);
+            if (match !== null) 
+            {
+                var detailName = match[1].replace(/\./g, " ");
+                var detailQuality = match[2];
+                var detailSource = match[3];
+                var detailCodec = match[4];
+                var detailGroup = match[5];
+
+                torrentName.innerHTML = "" + detailName + " - " + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
         }
     }
