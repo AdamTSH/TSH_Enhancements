@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         TSH Enhancements
-// @version      0.1.4
+// @version      0.1.5
 // @description  Enhancements to TSH
 // @match        https://torrentshack.eu/torrents.php*
 // @grant        none
@@ -98,7 +98,7 @@
                 var detailCodec = match[7];
                 var detailGroup = match[8];
 
-                torrentName.innerHTML = "" + detailName + " - <b>Y</b>" + detailDateYear + " <b>D</b>" + detailDateDay + " <b>M</b>" + detailDateMonth + "</span> (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
+                torrentName.innerHTML = "" + detailName + " - " + detailDateYear + "-" + detailDateMonth + "-" +  detailDateDay + "</span> (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
         }
 
@@ -133,7 +133,7 @@
                 var detailCodec = match[6];
                 var detailGroup = match[7];
 
-                torrentName.innerHTML = "" + detailName + " - <b>Y</b>" + detailDateYear + " <b>D</b>" + detailDateDay + " <b>M</b>" + detailDateMonth + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
+                torrentName.innerHTML = "" + detailName + " - " + detailDateYear + "-" + detailDateMonth + "-" +  detailDateDay + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
         }
     }
