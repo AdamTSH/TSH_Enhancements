@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         TSH Enhancements
-// @version      0.1.2
+// @version      0.1.3
 // @description  Enhancements to TSH
 // @match        https://torrentshack.eu/torrents.php*
 // @grant        none
@@ -71,7 +71,7 @@
             var torrentName = torrentArray[t].getElementsByClassName('torrent_name_link')[0];
 
             // SHOW.NAME.S01E01.VIDEO_QUALITY.VIDEO_SOURCE.AUDIO_CODEC.VIDEO_CODEC-GROUP
-            var match = torrentName.innerHTML.match(/(.*)\.S(\d\d)E(\d\d).*(720p|1080i|1080p)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV).*(H.264|x264|h264)-(.*)/);
+            var match = torrentName.innerHTML.match(/(.*)\.S(\d\d)E(\d\d).*(720p|1080i|1080p)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV|BluRay).*(H.264|x264|X264|h264)-(.*)/);
             if (match !== null) 
             {
                 var detailName = match[1].replace(/\./g, " ");
@@ -82,11 +82,11 @@
                 var detailCodec = match[6];
                 var detailGroup = match[7];
 
-                torrentName.innerHTML = "" + detailName + " - <b>S</b>" + detailSeason + " <b>E</b>" + detailEpisode + " (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>";
+                torrentName.innerHTML = "" + detailName + " - <b>S</b>" + detailSeason + " <b>E</b>" + detailEpisode + " (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
 
             // SHOW.NAME.2015.01.01.VIDEO_QUALITY.VIDEO_SOURCE.AUDIO_CODEC.VIDEO_CODEC-GROUP
-            var match = torrentName.innerHTML.match(/(.*)\.(\d\d\d\d)\.(\d\d)\.(\d\d).*(720p|1080i|1080p)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV).*(H.264|x264|h264)-(.*)/);
+            var match = torrentName.innerHTML.match(/(.*)\.(\d\d\d\d)\.(\d\d)\.(\d\d).*(720p|1080i|1080p)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV|BluRay).*(H.264|x264|X264|h264)-(.*)/);
             if (match !== null) 
             {
                 var detailName = match[1].replace(/\./g, " ");
@@ -98,7 +98,7 @@
                 var detailCodec = match[7];
                 var detailGroup = match[8];
 
-                torrentName.innerHTML = "" + detailName + " - <b>Y</b>" + detailDateYear + " <b>D</b>" + detailDateDay + " <b>M</b>" + detailDateMonth + "</span> (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>";
+                torrentName.innerHTML = "" + detailName + " - <b>Y</b>" + detailDateYear + " <b>D</b>" + detailDateDay + " <b>M</b>" + detailDateMonth + "</span> (" + detailQuality + "/" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
         }
 
@@ -108,7 +108,7 @@
             var torrentName = torrentArray[t].getElementsByClassName('torrent_name_link')[0];
 
             // SHOW.NAME.S01E01.VIDEO_SOURCE.AUDIO_CODEC.VIDEO_CODEC-GROUP
-            var match = torrentName.innerHTML.match(/(.*)\.S(\d\d)E(\d\d)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV).*(H.264|x264|h264)-(.*)/);
+            var match = torrentName.innerHTML.match(/(.*)\.S(\d\d)E(\d\d)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV|BluRay).*(H.264|x264|X264|h264)-(.*)/);
             if (match !== null) 
             {
                 var detailName = match[1].replace(/\./g, " ");
@@ -118,11 +118,11 @@
                 var detailCodec = match[5];
                 var detailGroup = match[6];
 
-                torrentName.innerHTML = "" + detailName + " - <b>S</b>" + detailSeason + " <b>E</b>" + detailEpisode + " (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>";
+                torrentName.innerHTML = "" + detailName + " - <b>S</b>" + detailSeason + " <b>E</b>" + detailEpisode + " (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
 
             // SHOW.NAME.2015.01.01.VIDEO_SOURCE.AUDIO_CODEC.VIDEO_CODEC-GROUP
-            var match = torrentName.innerHTML.match(/(.*)\.(\d\d\d\d)\.(\d\d)\.(\d\d)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV).*(H.264|x264|h264)-(.*)/);
+            var match = torrentName.innerHTML.match(/(.*)\.(\d\d\d\d)\.(\d\d)\.(\d\d)\.(HDTV|WEB-DL|WEBRiP|WEBRip|PDTV|BluRay).*(H.264|x264|X264|h264)-(.*)/);
             if (match !== null) 
             {
                 var detailName = match[1].replace(/\./g, " ");
@@ -133,9 +133,17 @@
                 var detailCodec = match[6];
                 var detailGroup = match[7];
 
-                torrentName.innerHTML = "" + detailName + " - <b>Y</b>" + detailDateYear + " <b>D</b>" + detailDateDay + " <b>M</b>" + detailDateMonth + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>";
+                torrentName.innerHTML = "" + detailName + " - <b>Y</b>" + detailDateYear + " <b>D</b>" + detailDateDay + " <b>M</b>" + detailDateMonth + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
         }
     }
     // 5: END
 })();
+
+function isRepack(title)
+{
+    if(title.indexOf("REPACK") > -1)
+        return "&nbsp;&nbsp;<font color=\"red\">REPACK</font>";
+    
+    return "";
+}
