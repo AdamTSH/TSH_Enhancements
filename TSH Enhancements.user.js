@@ -1,6 +1,6 @@
 // ==UserScript==
 // @name         TSH Enhancements
-// @version      0.1.6
+// @version      0.1.7
 // @description  Enhancements to TSH
 // @match        https://torrentshack.eu/torrents.php*
 // @grant        none
@@ -154,10 +154,9 @@
             if (match !== null) 
             {
                 var detailName = match[1].replace(/\./g, " ");
-                var detailQuality = match[2];
-                var detailSource = match[3];
-                var detailCodec = match[4];
-                var detailGroup = match[5];
+                var detailSource = match[2];
+                var detailCodec = match[3];
+                var detailGroup = match[4];
 
                 torrentName.innerHTML = "" + detailName + " - " + "</span> (" + detailSource + ") <font color=\"grey\"><em>" + detailGroup + "</em></font>" + isRepack(torrentName.innerHTML);
             }
