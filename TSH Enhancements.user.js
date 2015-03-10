@@ -1,8 +1,8 @@
 // ==UserScript==
 // @name         TSH Enhancements
-// @version      0.1.7
+// @version      0.1.8
 // @description  Enhancements to TSH
-// @match        https://torrentshack.eu/torrents.php*
+// @match        https://torrentshack.me/torrents.php*
 // @grant        none
 // @updateURL    https://github.com/AdamTSH/TSH_Enhancements/raw/master/TSH%20Enhancements.user.js
 // ==/UserScript==
